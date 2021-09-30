@@ -1,0 +1,24 @@
+<ion-view view-title="Playlists">
+  <ion-content>
+    <div class="search">
+      <button onClick="Search()">Search</button>
+      <input type="text" id="myInput" placeholder="Search.." />
+    </div>
+    <button class="myClass" on-tap="show()">Open Modal</button>
+    <div ng-repeat="item in list">
+      fname:{{item.fname}}<br />
+      lname:{{item.lname}}<br />
+      age:{{item.age}}<br />
+      address{{item.address}}
+      <button class="btn btn-success btn-sm" ng-click="edit()">Edit</button>
+      <button class="btn btn-danger btn-sm" ng-click="delete($index)">
+        Delete
+      </button>
+    </div>
+    <div class="bar bar-footer bar-balanced">
+      <button id="previous" onclick="previousPage()">PREVIOUS</button>
+      <span id="currentPage"></span>
+      <button id="next" onclick="nextPage()">NEXT</button>
+    </div>
+  </ion-content>
+</ion-view>
