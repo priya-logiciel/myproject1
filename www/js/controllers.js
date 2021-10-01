@@ -45,6 +45,8 @@ angular
   .controller("PlaylistsCtrl", function ($scope, $ionicModal) {
     $scope.numberPerPage = 5;
     $scope.currentPage = 1;
+    $scope.userDetail = {};
+    //CREATE LIST
     $scope.list = [
       {
         address: "Metro",
@@ -82,15 +84,7 @@ angular
         lname: "Kumari",
       },
     ];
-    $scope.delete = function (index) {
-      //Find the record using Index from Array.
-      var name = $scope.list[index].Name;
-      if ("Do you want to delete: " + name) {
-        //Remove the item from Array using Index.
-        $scope.list.splice(index, 1);
-      }
-    };
-    //modal
+    //MODAL
     $ionicModal
       .fromTemplateUrl("templates/addmodal.html", {
         scope: $scope,
@@ -99,10 +93,37 @@ angular
       .then(function (modal) {
         $scope.modal = modal;
       });
-    $scope.openModal = function () {
+    //open button function
+    $scope.openmodal = function () {
       $scope.modal.show();
     };
+    //CLOSE BUTTON FUNCTION
     $scope.closeModal = function () {
+      $scope.modal.hide();
+    };
+    //delete function
+    $scope.delete = function (index) {
+      //Find the record using Index from Array.
+      var name = $scope.list[index].Name;
+      if ("Do you want to delete: " + name) {
+        //Remove the item from Array using Index.
+        $scope.list.splice(index, 1);
+      }
+    };
+    //add function
+    $scope.addItem = function () {
+      $scope.list.push({
+        id: new Date().valueOf(),
+        fname: $scope.userDetail.fname,
+        lname: $scope.userDetail.lname,
+        age: $scope.userDetail.age,
+        address: $scope.userDetail.address,
+      });
+      $scope.modal.hide();
+    };
+    //cancel button function
+    $scope.cancelmodal = function () {
+      $scope.userDetail = {};
       $scope.modal.hide();
     };
   });

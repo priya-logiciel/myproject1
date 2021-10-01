@@ -1,8 +1,39 @@
 <ion-modal-view>
-    <ion-header-bar>
+    <ion-header-bar class="bar-royal">
       <h1 class="title">My Modal title</h1>
+      <button on-tap="closeModal()" class="button"> Close modal</button>
     </ion-header-bar>
     <ion-content>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">First Name</span>
+          <input ng-model="userDetail.fname" type="text" placeholder="First Name">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Last Name</span>
+          <input  ng-model="userDetail.lname" type="text" placeholder="Last Name">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">AGE</span>
+          <input  ng-model="userDetail.age"type="text" placeholder="Age">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">ADDRESS</span>
+          <input  ng-model="userDetail.address" type="text" placeholder="Address">
+        </label>
+      </div>
+      <button class="button button-positive" on-tap="addItem()">
+        ADD
+      </button>
+      <button class="button button-balanced" on-tap="cancelmodal()">
+       CANCEL
+      </button>      
+      <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search">
+      </label>
+    </div>
     </ion-content>
   </ion-modal-view>
 </script>
