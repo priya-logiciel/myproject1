@@ -1,7 +1,12 @@
 <ion-view view-title="Playlists">
   <ion-content class="bar-royal">
     <button on-tap="openmodal()" class="button">show modal</button>
-    <div ng-repeat="item in list">
+    <label class="item item-input item-floating-label">
+      <span class="input-label">SEARCH</span>
+      <input ng-model="searchInput.value" type="text" placeholder="Search" />
+    </label>
+    <button class="button button-positive" on-tap="searchuser()">SEARCH</button>
+    <div ng-repeat="item in userList">
       fname:{{item.fname}}<br />
       lname:{{item.lname}}<br />
       age:{{item.age}}<br />

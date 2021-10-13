@@ -46,6 +46,8 @@ angular
     $scope.numberPerPage = 5;
     $scope.currentPage = 1;
     $scope.userDetail = {};
+    $scope.userList = [];
+    $scope.searchInput = {};
     //CREATE LIST
     $scope.list = [
       {
@@ -126,4 +128,30 @@ angular
       $scope.userDetail = {};
       $scope.modal.hide();
     };
+    //search button function
+    $scope.searchuser = function () {
+      console.log($scope.searchInput);
+      $scope.loadlist();
+    };
+    $scope.loadlist = function () {
+      $scope.userList = $scope.list.filter(function (item) {
+        return item.fname.includes($scope.searchInput.value);
+      });
+      console.log($scope.userList);
+      console.log($scope.list);
+    };
+
+    //pagination next nd previuos button function
+    $scope.nextpage = function () {
+      currentPage += 1;
+    };
+    $scope.previouspage = function () {
+      currentpage -= 1;
+    };
+    $scope.checkpage = function () {
+      $scope.disabled = currentPage == 1 ? true : false;
+      $scope.disabled =
+        numberPerPage * currentPage < value.length ? false : true;
+    };
+    $scope.loadlist();
   });
