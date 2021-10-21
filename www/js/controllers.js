@@ -43,11 +43,13 @@ angular
     };
   })
   .controller("PlaylistsCtrl", function ($scope, $ionicModal) {
-    $scope.numberPerPage = 5;
+    $scope.filteredTodos = [];
+    $scope.numberPerPage = 10;
     $scope.currentPage = 1;
     $scope.userDetail = {};
     $scope.userList = [];
     $scope.searchInput = {};
+    $scope.maxSize = 5;
     //CREATE LIST
     $scope.list = [
       {
@@ -133,6 +135,7 @@ angular
       console.log($scope.searchInput);
       $scope.loadlist();
     };
+
     $scope.loadlist = function () {
       $scope.userList = $scope.list.filter(function (item) {
         return item.fname.includes($scope.searchInput.value);
@@ -140,18 +143,18 @@ angular
       console.log($scope.userList);
       console.log($scope.list);
     };
+    $scope.makeTodos = function () {
+      $scope.todos = [];
+      for (i = 1; i <= 1000; i++) {
+        $scope.todos.push({ text: "todo " + i, done: false });
+      }
+    };
+    $scope.makeTodos();
 
-    //pagination next nd previuos button function
-    $scope.nextpage = function () {
-      currentPage += 1;
-    };
-    $scope.previouspage = function () {
-      currentpage -= 1;
-    };
-    $scope.checkpage = function () {
-      $scope.disabled = currentPage == 1 ? true : false;
-      $scope.disabled =
-        numberPerPage * currentPage < value.length ? false : true;
-    };
-    $scope.loadlist();
+    $scope.$watch("currentPage + numPerPage", function () {
+      var begin = ($scope.currentPage - 1) * $scope.numPerPage,
+        end = begin + $scope.numPerPage;
+
+      $scope.filteredTodos = $scope.todos.slice(begin, end);
+    });
   });

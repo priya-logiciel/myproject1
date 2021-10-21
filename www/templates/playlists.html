@@ -16,11 +16,11 @@
       </button>
       <button ng-click="delete($index)">Delete</button>
     </div>
-    <div class="bar bar-footer bar-balanced">
-      <ion-footer-bar align-center="left" class="bar-royal">
-        <button class="button" on-tap="previousPage()">PREVIOUS</button>
-        <button class="button" on-tap="nextPage()">NEXT</button>
-      </ion-footer-bar>
-    </div>
   </ion-content>
+  <div class="bar bar-footer bar-balanced">
+    <ion-footer-bar align-center="left" class="bar-royal">
+      <button class="button" on-tap="previousPage(makeTodos)">PREVIOUS</button>
+      <button class="button" on-tap="nextPage(makeTodos)">NEXT</button>
+    </ion-footer-bar>
+  </div>
 </ion-view>
